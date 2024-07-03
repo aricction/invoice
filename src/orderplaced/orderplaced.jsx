@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 const Orderplaced = () => {
   const [showSummary, setShowSummary] = useState(false);
   const location = useLocation();
-  const { name, address, email , number , productName, productImg, productPrice, shippingCost } = location.state || {};
+  const { name, address, email , number , productName, image, productPrice, shippingCost } = location.state || {};
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -18,6 +18,8 @@ const Orderplaced = () => {
   }, []);
 
   const generatePDF = () => {
+    const totalPrice = parseFloat(productPrice) + shippingCost; 
+
     const doc = new jsPDF();
     doc.setFontSize(22);
     doc.text("INVOICE ", 120,20);
@@ -74,7 +76,7 @@ const Orderplaced = () => {
           </div>
           <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
             <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-              <img className="m-2 h-24 w-28 rounded-md border object-cover object-center" src={productImg} alt="Product" />
+              <img className="m-2 h-24 w-28 rounded-md border object-cover object-center" src={image} alt="Product" />
               <div className="flex w-full flex-col px-4 py-4">
                 <span className="font-semibold">{productName}</span>
                 <span className="float-right text-gray-400">42EU - 8.5US</span>
@@ -85,7 +87,7 @@ const Orderplaced = () => {
           <div className="mt-4 flex justify-end items-center">
             <div className="text-right">
               <span className="block text-sm font-medium  mt-5">Shipping: ₹{shippingCost}</span>
-              <span className="block text-xl font-medium font-bold">Total: ₹{productPrice + shippingCost}</span>
+              <span className="block text-xl font-medium font-bold">Total: ₹{(parseFloat(productPrice) + shippingCost).toFixed(2)}</span>
             </div>
           </div>
           <button
