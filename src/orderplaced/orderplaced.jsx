@@ -8,7 +8,8 @@ const Orderplaced = () => {
   const [showSummary, setShowSummary] = useState(false);
   const location = useLocation();
   const { name, address, email , number , productName, image, productPrice, shippingCost } = location.state || {};
-
+  const date = new Date();
+  const today = date.toLocaleDateString();
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSummary(true);
@@ -22,12 +23,12 @@ const Orderplaced = () => {
 
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text("INVOICE ", 120,20);
+    doc.text("INVOICE ", 90,20);
    
 
     doc.setFontSize(12);
     doc.text(`Order Id: #0000`, 10, 40);
-    doc.text(`Order Date: 26/06/2024`, 10, 50);
+    doc.text(`Order Date: ${today}`, 10, 50);
 
     doc.text(`${name}`, 125, 40);
     doc.text(`${email}`, 125, 50);
@@ -37,7 +38,7 @@ const Orderplaced = () => {
         startY: 70,
         head: [['Product Name', 'Price', 'Shipping' , 'Total']],
         body:[
-            [productName, `${productPrice}`, `${shippingCost}`, `${productPrice + shippingCost}`],
+            [productName, `${productPrice}`, `${shippingCost}`, `${(parseFloat(productPrice) + shippingCost).toFixed(2)}`],
         ],
     });
 
@@ -64,7 +65,7 @@ const Orderplaced = () => {
           <div className="flex justify-between items-center">
             <div className="mt-4">
               <p className="text-sm font-medium text-white">Order ID: #0000</p>
-              <p className="text-sm font-medium text-white">Order Date: 26/06/2024</p>
+              <p className="text-sm font-medium text-white">Order Date: {today}</p>
             </div>
             <div className="mt-4 text-right">
               <p className="text-xl font-medium font-bold">Deliver to</p>
