@@ -50,10 +50,10 @@ const Orderplaced = () => {
   }
 
   return (
-    <div className="bg-ceramic-400 ">
+    <div className="bg-ceramic-400 dark:bg-dark-300 ">
       {!showSummary ? (
          <div className="flex items-center justify-center h-screen">     
-         <div className="card w-1/2 h-1/2 rounded bg-ceramic-300 shadow-xl p-4 flex flex-col items-center justify-center overflow-hidden ">
+         <div className="card w-1/2 h-1/2 rounded bg-ceramic-300 dark:bg-dark-200 shadow-xl p-4 flex flex-col items-center justify-center overflow-hidden ">
              <figure className=" h-3/4">
                  <img src={a1} alt="order placed" className="w-full h-full object-cover" />
              </figure>
@@ -75,13 +75,13 @@ const Orderplaced = () => {
               <p className="text-sm font-medium text-white">{address}</p>
             </div>
           </div>
-          <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-            <div className="flex flex-col rounded-lg bg-white sm:flex-row">
+          <div className="mt-8 space-y-3 rounded-lg border bg-white dark:bg-dark-200 px-2 py-4 sm:px-6">
+            <div className="flex flex-col rounded-lg bg-white dark:bg-dark-200 sm:flex-row">
               <img className="m-2 h-24 w-28 rounded-md border object-cover object-center" src={image} alt="Product" />
               <div className="flex w-full flex-col px-4 py-4">
-                <span className="font-semibold">{productName}</span>
-                <span className="float-right text-gray-400">42EU - 8.5US</span>
-                <p className="text-lg font-bold">₹{productPrice}</p>
+                <span className="font-semibold dark:text-white">{productName}</span>
+                <span className="float-right text-gray-400 dark:text-white">42EU - 8.5US</span>
+                <p className="text-lg font-bold dark:text-white">₹{productPrice}</p>
               </div>
             </div>
           </div>
@@ -92,7 +92,7 @@ const Orderplaced = () => {
             </div>
           </div>
           <button
-          className="mt-4 mb-8 w-full rounded-md bg-ceramic-400 px-6 py-3 font-medium"
+          className="mt-4 mb-8 w-full rounded-md bg-ceramic-400 dark:bg-dark-50 px-6 py-3 font-medium"
           onClick={generatePDF}
           >
           download PDF
