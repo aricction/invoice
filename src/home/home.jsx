@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DarkMode from "../component/darkmode";
+import Navbar from "../component/navbar";
 
  const products = [
   
@@ -42,7 +43,7 @@ const Home = () => {
   };
   return (
     <>
-    <DarkMode isDark={isDark} toggleDarkMode={toggleDarkMode}/> 
+     <Navbar isDark={isDark} toggleDarkMode={toggleDarkMode} />
     <div className="flex items-center justify-center h-screen p-4 bg-white dark:bg-dark-300">
          
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
